@@ -186,6 +186,27 @@ public class BST {
      */
     public Node removeNode(int data){
 
+        // get the node we want to remove from the tree
+        Node nodeToRemove = findNode(data);
+        Node parent = findParentNode(nodeToRemove);
+
+        // check that there is only a right child
+        if (nodeToRemove.getRight() != null && nodeToRemove.getLeft() == null){
+            // we will just replace the current node with its right child
+
+            // get our nodes only child
+            Node child = nodeToRemove.getRight();
+
+            if(parent.getData() < nodeToRemove.getData()){
+                // if parent data is less than to remove then our node must be a right child
+                parent.setRight(child);
+            }
+            else{
+                // if not parent is not less then must be more so we will set the left parent
+                parent.setLeft(child);
+            }
+        }
+
         return null;
     }
 }

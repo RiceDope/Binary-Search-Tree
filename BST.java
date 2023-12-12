@@ -177,4 +177,15 @@ public class BST {
 
         return parent;
     }
+
+    /**
+     * A function that will remove a given node from the tree based on the data given
+     * 
+     * @param data The data contained in the node we want to remove
+     * @return The root node
+     */
+    public Node removeNode(int data){
+
+        return null;
+    }
 }

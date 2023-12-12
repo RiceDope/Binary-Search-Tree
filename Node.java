@@ -1,5 +1,8 @@
 /**
  * A basic implementation of a node in a binary search tree. It is only compatible with integers.
+ * 
+ * This is me testing push requests
+ * 
  * @author Rhys Walker
  * @version 1.1
  * @since 2023-12-11

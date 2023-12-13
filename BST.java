@@ -164,6 +164,15 @@ public class BST {
     }
 
     /**
+     * Traverse the tree using pre order traversal
+     * @return ArrayList of pre order traversal
+     */
+    public ArrayList<Node> preOrderTraversal(){
+
+        return null;
+    }
+
+    /**
      * Finds the parent of a given node
      * @param child The node whose parent we want to find
      * @return

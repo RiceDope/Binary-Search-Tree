@@ -185,62 +185,109 @@ public class BST {
      * @return The root node
      */
     public Node removeNode(int data){
-
-        /*
-        * Need to add check to see if node we are looking for is root node. If root node complete the steps as given below
-        *
-        * Then add a condition to remove a node if it has two children by using its in order successor to replace it.
-        */
-
         // get the node we want to remove from the tree
         Node nodeToRemove = findNode(data);
-        Node parent = findParentNode(nodeToRemove.getData());
 
-        // check that there is only a right child
-        if (nodeToRemove.getRight() != null && nodeToRemove.getLeft() == null){
-            // we will just replace the current node with its right child
+        if (nodeToRemove == root){
 
-            // get our nodes only child
-            Node child = nodeToRemove.getRight();
+            System.out.println("This section is running");
 
-            if(parent.getData() < nodeToRemove.getData()){
-                // if parent data is less than to remove then our node must be a right child
-                parent.setRight(child);
-            }
-            else{
-                // if parent is not less then must be more so we will set the left parent
-                parent.setLeft(child);
-            }
+            // find the in order successor
+            ArrayList<Node> inOrder = inOrderTraversal();
+            int indexOfOurItem = inOrder.indexOf(nodeToRemove);
+            Node successor = inOrder.get(indexOfOurItem+1);
+
+            // set the pointers for the root node
+            successor.setLeft(nodeToRemove.getLeft());
+            successor.setRight(nodeToRemove.getRight());
+
+            // change the reference to the root of the tree
+            root = successor;
         }
-        // check that there is only a left child
-        else if (nodeToRemove.getRight() == null && nodeToRemove.getLeft() != null){
-            // we will just replace current node with its left child
+        else{
+            // get the parent node of the node to remove
+            Node parent = findParentNode(nodeToRemove.getData());
 
-            // get our nodes only child
-            Node child = nodeToRemove.getLeft();
+            // check that there is only a right child
+            if (nodeToRemove.getRight() != null && nodeToRemove.getLeft() == null){
+                // we will just replace the current node with its right child
 
-            if(parent.getData() < nodeToRemove.getData()){
-                // if parent data is less than to remove then our node must be a right child
-                parent.setRight(child);
-            }
-            else{
-                // if parent is not less then must be more so we will set the left parent
-                parent.setLeft(child);
-            }
-        }
-        else if (nodeToRemove.getRight() == null && nodeToRemove.getLeft() == null){
-            // if no children just remove reference to the object
+                // get our nodes only child
+                Node child = nodeToRemove.getRight();
 
-            if(parent.getData() < nodeToRemove.getData()){
-                // if parent data is less than to remove then our node must be a right child
-                parent.setRight(null);
+                if(parent.getData() < nodeToRemove.getData()){
+                    // if parent data is less than to remove then our node must be a right child
+                    parent.setRight(child);
+                }
+                else{
+                    // if parent is not less then must be more so we will set the left parent
+                    parent.setLeft(child);
+                }
             }
-            else{
-                // if parent is not less then must be more so we will set the left parent
-                parent.setLeft(null);
+            // check that there is only a left child
+            else if (nodeToRemove.getRight() == null && nodeToRemove.getLeft() != null){
+                // we will just replace current node with its left child
+
+                // get our nodes only child
+                Node child = nodeToRemove.getLeft();
+
+                if(parent.getData() < nodeToRemove.getData()){
+                    // if parent data is less than to remove then our node must be a right child
+                    parent.setRight(child);
+                }
+                else{
+                    // if parent is not less then must be more so we will set the left parent
+                    parent.setLeft(child);
+                }
+            }
+            else if (nodeToRemove.getRight() == null && nodeToRemove.getLeft() == null){
+                // if no children just remove reference to the object
+
+                if(parent.getData() < nodeToRemove.getData()){
+                    // if parent data is less than to remove then our node must be a right child
+                    parent.setRight(null);
+                }
+                else{
+                    // if parent is not less then must be more so we will set the left parent
+                    parent.setLeft(null);
+                }
+            }
+            else if (nodeToRemove.getRight() != null && nodeToRemove.getLeft() != null){
+
+                // find the in order successor
+                ArrayList<Node> inOrder = inOrderTraversal();
+                int indexOfOurItem = inOrder.indexOf(nodeToRemove);
+                Node successor = inOrder.get(indexOfOurItem+1);
+
+                // set successors pointers to the children of our node
+                successor.setLeft(nodeToRemove.getLeft());
+                successor.setRight(nodeToRemove.getRight());
+
+                // remove the successors parents pointer
+                Node successorParent = findParentNode(successor.getData());
+                if (findParentNode(successor.getData()).getData() < successor.getData()){
+                    // we are on right of parent
+                    
+                    successorParent.setRight(null);
+                }
+                else {
+                    successorParent.setLeft(null);
+                }
+
+                // set the correct node for the parents
+                if(parent.getData() < nodeToRemove.getData()){
+                    // if parent data is less than to remove then our node must be a right child
+                    parent.setRight(successor);
+                }
+                else{
+                    // if parent is not less then must be more so we will set the left parent
+                    parent.setLeft(successor);
+                }
+
             }
         }
 
         return root;
+
     }
 }

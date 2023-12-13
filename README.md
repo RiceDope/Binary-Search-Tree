@@ -1,3 +1,3 @@
-Currently working on implementing removal of a node for the BST.
+Currently working on implementing pre order traversal.
 
 -- Rhys --

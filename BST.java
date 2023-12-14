@@ -20,7 +20,7 @@ public class BST {
      */
     public void addItem(int data){
         if (root == null){
-            root = new Node(data, null);
+            root = new Node(data);
         }
         else {
             insert(data);
@@ -45,7 +45,7 @@ public class BST {
         while(true){
             if(data > currentNode.getData()){ // going right
                 if (currentNode.getRight() == null){ // we have found our position
-                    currentNode.setRight(new Node(data, currentNode)); // set right child to be new node
+                    currentNode.setRight(new Node(data)); // set right child to be new node
                     return root;
                 }
                 else{
@@ -54,7 +54,7 @@ public class BST {
             }
             else if(data < currentNode.getData()){ // going left
                 if (currentNode.getLeft() == null){ // we have found our position
-                    currentNode.setLeft(new Node(data, currentNode)); // set right child to be new node
+                    currentNode.setLeft(new Node(data)); // set right child to be new node
                     return root;
                 }
                 else{
@@ -98,17 +98,49 @@ public class BST {
     }
 
     /**
-     * Produces a list of items to the item we are looking for
+     * Produces a list of integers to the item we are looking for
      * @param data Value of what we are looking for
-     * @return ArrayList of values to node
+     * @return ArrayList of values (int) to node
      */
-    public ArrayList<Integer> listToNode(int data){
+    public ArrayList<Integer> listToNodeInt(int data){
         Node currentNode = root;
         ArrayList<Integer> list = new ArrayList<Integer>();
         while(true){
             if (currentNode != null){ // make sure node is not null
 
                 list.add(currentNode.getData());
+
+                if (data > currentNode.getData()){ // go right
+                    currentNode = currentNode.getRight();
+                }
+
+                else if (data < currentNode.getData()){ // go left
+                    currentNode = currentNode.getLeft();
+                }
+
+                else if (data == currentNode.getData()){ // if not more or less then we know we have found our node
+                    return list;
+                }
+            }
+            else { // if node is null then node we are searching for isnt in tree
+                return null;
+            }
+        }
+    }
+
+    /**
+     * Produces a list of nodes to the item we are looking for
+     * @param data Value of what we are looking for
+     * @return ArrayList of values (Node) to node
+     */
+    public ArrayList<Node> listToNode(Node node){
+        int data = node.getData();
+        Node currentNode = root;
+        ArrayList<Node> list = new ArrayList<Node>();
+        while(true){
+            if (currentNode != null){ // make sure node is not null
+
+                list.add(currentNode);
 
                 if (data > currentNode.getData()){ // go right
                     currentNode = currentNode.getRight();
@@ -204,16 +236,31 @@ public class BST {
     }
 
     /**
-     * Finds the parent of a given node
+     * Finds the parent of a given node based on its data
      * @param child The node whose parent we want to find
-     * @return
+     * @return The parent node
      */
-    public Node findParentNode(int childData){
+    public Node findParentNodeInt(int childData){
 
         // get a list of nodes
-        ArrayList<Integer> list = listToNode(childData);
+        ArrayList<Integer> list = listToNodeInt(childData);
 
         Node parent = findNode(list.get(list.size()-2));
+
+        return parent;
+    }
+
+    /**
+     * Finds the parent of a given node
+     * @param child The node whose parent we want to find
+     * @return The parent node
+     */
+    public Node findParentNode(Node child){
+
+        // get a list of nodes
+        ArrayList<Node> list = listToNode(child);
+
+        Node parent = findNode(list.get(list.size()-2).getData());
 
         return parent;
     }
@@ -246,7 +293,7 @@ public class BST {
         }
         else{
             // get the parent node of the node to remove
-            Node parent = findParentNode(nodeToRemove.getData());
+            Node parent = findParentNode(nodeToRemove);
 
             // check that there is only a right child
             if (nodeToRemove.getRight() != null && nodeToRemove.getLeft() == null){
@@ -304,8 +351,8 @@ public class BST {
                 successor.setRight(nodeToRemove.getRight());
 
                 // remove the successors parents pointer
-                Node successorParent = findParentNode(successor.getData());
-                if (findParentNode(successor.getData()).getData() < successor.getData()){
+                Node successorParent = findParentNode(successor);
+                if (findParentNode(successor).getData() < successor.getData()){
                     // we are on right of parent
                     
                     successorParent.setRight(null);

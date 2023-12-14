@@ -3,6 +3,6 @@ The file Sample.java shows how to use the BST through examples. Check back here 
 Any updates will be listed here in the README.md
 
 Updates:
-    Nothing yet :)
+- Nothing yet :)
 
 -- Rhys --

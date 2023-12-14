@@ -1,7 +1,5 @@
-An implementation of a Binary search tree in java.
+Changing parameters of some of the functions in BST to use Node rather than int. Functions using int will still be available but will be ranamed.
 
-Check the branches to see what I'm currently working on.
-
-Major changes may happen soon where we use the Node class as a pose to int to locate nodes in the tree. This will make the class more user friendly.
+Removing the parent tracking feature of Node as is not being used and uses uneccessary memory especially in larger trees.
 
 -- Rhys --

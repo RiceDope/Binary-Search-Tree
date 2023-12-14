@@ -1,3 +1,3 @@
-Currently working on implementing pre order traversal.
+Pre order traversal working now.
 
 -- Rhys --

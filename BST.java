@@ -2,8 +2,8 @@
  * An implementation of a Binary Search Tree.
  * 
  * @author Rhys Walker
- * @version 1.1
- * @since 2023-12-12
+ * @version 1.2
+ * @since 2023-12-14
  */
 
 import java.util.ArrayList;
@@ -169,7 +169,38 @@ public class BST {
      */
     public ArrayList<Node> preOrderTraversal(){
 
-        return null;
+        // create a new arrayList to gether the terms
+        ArrayList<Node> preOrderList = new ArrayList<Node>();
+
+        // call the recursive function
+        preOrderList = checkNodePO(root, preOrderList);
+
+        // return our list
+        return preOrderList;
+    }
+
+    /**
+     * Function to recursively check the tree in pre order
+     * @param node The node we are currently on
+     * @param preOrderList The list to add to
+     * @return ArrayList of pre order
+     */
+    private ArrayList<Node> checkNodePO(Node node, ArrayList<Node> preOrderList){
+
+        // check we are not on a leaf node
+        if (node == null){
+            return preOrderList;
+        }
+
+        // add node to the list
+        preOrderList.add(node);
+
+        // check left and right subtree
+        preOrderList = checkNodePO(node.getLeft(), preOrderList);
+        preOrderList = checkNodePO(node.getRight(), preOrderList);
+
+        // return the list
+        return preOrderList;
     }
 
     /**

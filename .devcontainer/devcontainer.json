@@ -1,0 +1,11 @@
+{
+  // Configuration name
+  "name": "Codespace for BST",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot"
+      ]
+    }
+  }
+}

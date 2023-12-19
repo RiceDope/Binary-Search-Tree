@@ -13,6 +13,12 @@ tree.addNode(node);
 tree.addItem(2);
 System.out.println(node.getLeft().getData());
 
-Last commit before merge :-)
+Merge Schedule:
+- 24/12/2023 "Just before Christmas"
+- Code to be reviewed and tested
+- Sample-Code branch needs updating in line with current release
+- Reorganisation of methods and potential renaming to come
+
+ANYONE USING THIS BRANCH FUNCTION NAMES ARE SUBJECT TO CHANGE BEFORE COMMITING TI MAIN (For backwards compatibility)
 
 -- Rhys --

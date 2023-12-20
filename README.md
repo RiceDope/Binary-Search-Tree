@@ -6,12 +6,16 @@ Or change the input to the function to feature a node instead e.g. "tree.findPar
 Changed the tree.remove(int data) function to node use tree.removeNode(Node node) both are available.
 
 Added the tree.addNode(Node node) function this allows user to keep reference of the node they are wishing to add.
+
+```Java
+// create a node and add to tree
 Node node = new Node(5);
 tree.addNode(node);
+tree.addItem(2);
 
 // still have reference of node
-tree.addItem(2);
 System.out.println(node.getLeft().getData());
+```
 
 Merge Schedule:
 - 24/12/2023 "Just before Christmas"
@@ -19,6 +23,6 @@ Merge Schedule:
 - Sample-Code branch needs updating in line with current release
 - Reorganisation of methods and potential renaming to come
 
-ANYONE USING THIS BRANCH FUNCTION NAMES ARE SUBJECT TO CHANGE BEFORE COMMITING TI MAIN (For backwards compatibility)
+ANYONE USING THIS BRANCH FUNCTION NAMES ARE SUBJECT TO CHANGE BEFORE COMMITING TO MAIN (For backwards compatibility)
 
 -- Rhys --

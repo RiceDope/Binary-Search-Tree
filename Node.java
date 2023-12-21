@@ -2,24 +2,22 @@
  * A basic implementation of a node in a binary search tree. It is only compatible with integers.
  * 
  * @author Rhys Walker
- * @version 1.1
- * @since 2023-12-11
+ * @version 1.2
+ * @since 2023-12-14
  */
 
 public class Node {
     private int data;
     private Node right;
     private Node left;
-    private Node parent;
 
     /**
      * Constructor for a node in out binary tree
      * @param data The data to be stored in a given node
      * @param parent The parent node of our node. Will be null if is root node
      */
-    public Node(int data, Node parent){
+    public Node(int data){
         this.data = data;
-        this.parent = parent;
         this.right = null;
         this.left = null;
     }
@@ -30,14 +28,6 @@ public class Node {
      */
     public int getData(){
         return data;
-    }
-
-    /**
-     * Set the parent pointer for the node
-     * @param newParent The node that will be the new parent
-     */
-    public void changeParent(Node newParent){
-        this.parent = newParent;
     }
 
     /**
@@ -54,14 +44,6 @@ public class Node {
      */
     public void setRight(Node right){
         this.right = right;
-    }
-
-    /**
-     * Gets the parent of our node
-     * @return The parent of our node
-     */
-    public Node getParent(){
-        return parent;
     }
 
     /**

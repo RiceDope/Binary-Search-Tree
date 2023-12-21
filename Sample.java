@@ -20,7 +20,10 @@ public class Sample {
         tree.addItem(10);
         tree.addItem(40);
         tree.addItem(60);
-        tree.addItem(90);
+
+        // adding node based on a reference to a node object
+        Node node = new Node(90);
+        tree.addNode(node);
 
         /*
          *         TREE IN EXAMPLE
@@ -44,8 +47,18 @@ public class Sample {
         // get a list of integers to a given node
         System.out.println(tree.listToNode(10));
 
+        // get an array of nodes to a node given by reference
+        ArrayList<Node> nodesToNode = tree.nodesToNode(node);
+        // loop over nodes to node using .getData() to print out the data in the given node
+        for (Node item : nodesToNode) {
+            System.out.println(item.getData());
+        }
+
         // find the parent node
         System.out.println(tree.findParentNode(10).getData());
+
+        // get the parent node based on a reference to a node
+        System.out.println(tree.getNodesParent(node));
 
         // traverse the tree using in order traversal
         ArrayList<Node> inOrder = tree.inOrderTraversal();
@@ -62,7 +75,17 @@ public class Sample {
         }
 
         // remove a node from the tree
-        tree.removeNode(10);
+        tree.remove(10);
+
+        // remove a node based on a reference to that node
+        tree.removeNode(node);
+
+        // print tree in order to show the change
+        ArrayList<Node> showChange = tree.inOrderTraversal();
+        System.out.println("IN ORDER");
+        for(Node item : showChange){
+            System.out.println(item.getData());
+        }
     }
     
 }

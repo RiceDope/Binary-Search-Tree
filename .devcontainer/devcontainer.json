@@ -1,0 +1,17 @@
+{
+  // Configuration name
+  "name": "Codespace for BST",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "github.github-vscode-theme",
+        "vscjava.vscode-java-pack",
+        "RobbOwen.synthwave-vscode"
+      ],
+      "settings":{
+        "workbench.colorTheme": "SynthWave '84"
+      }
+    }
+  }
+}

@@ -318,7 +318,7 @@ public class BST {
      * @param data The data contained in the node we want to remove
      * @return The root node
      */
-    public Node removeNodeInt(int data){
+    public Node remove(int data){
         // get the node we want to remove from the tree
         Node nodeToRemove = findNode(data);
 

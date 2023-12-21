@@ -3,13 +3,13 @@
  * 
  * @author Rhys Walker
  * @version 1.3
- * @since 2023-12-19
+ * @since 2023-12-21
  */
 
 import java.util.ArrayList;
 
 public class BST {
-    
+
     private Node root;
 
     public BST(){

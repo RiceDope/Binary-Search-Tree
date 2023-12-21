@@ -1,18 +1,17 @@
-Changing parameters of some of the functions in BST to use Node rather than int. Functions using int will still be available but will be renamed.
+# Changing parameters
+Here the main goal was to change some of the parameters of the code. This was to feature alternate versions of the functions that worked previously.
 
-Most have been changed. To fix any issues caused change the function names to have Int at the end e.g. "tree.findParentInt(DATA)".
-Or change the input to the function to feature a node instead e.g. "tree.findParent(NODE)".
+### Example
+```Java
+// returns an ArrayList<Integer>
+tree.listToNode(5);
 
-Changed the tree.remove(int data) function to node use tree.removeNode(Node node) both are available.
+// returns an ArrayList<Node>
+tree.nodesToNode(6);
+```
 
-Added the tree.addNode(Node node) function this allows user to keep reference of the node they are wishing to add.
-Node node = new Node(5);
-tree.addNode(node);
+*The benefit of this is that rather than getting an array of integers we now get an array of nodes. before we would need to then use the ``` tree.findNode(tree.listToNode(5).get(tree.listToNode(5).size()-1))).getData()``` in order to get the parents nodes data and it would be quite time consuming and complicated to look at. It just removes the '''tree.findNode() call'''*
 
-// still have reference of node
-tree.addItem(2);
-System.out.println(node.getLeft().getData());
+This is just one example of improvements that have been made. Check the Sample-Code branch for a full list of functions and sample use cases.
 
-Last commit before merge :-)
-
--- Rhys --
+--Rhys--

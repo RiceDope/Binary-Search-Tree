@@ -9,7 +9,9 @@
 import java.util.ArrayList;
 
 public class BST {
+    
     private Node root;
+
     public BST(){
         root = null;
     }
@@ -147,7 +149,7 @@ public class BST {
      * @param data Value of what we are looking for
      * @return ArrayList of values (int) to node
      */
-    public ArrayList<Integer> listToNodeInt(int data){
+    public ArrayList<Integer> listToNode(int data){
         Node currentNode = root;
         ArrayList<Integer> list = new ArrayList<Integer>();
         while(true){
@@ -178,7 +180,7 @@ public class BST {
      * @param data Value of what we are looking for
      * @return ArrayList of values (Node) to node
      */
-    public ArrayList<Node> listToNode(Node node){
+    public ArrayList<Node> nodesToNode(Node node){
         int data = node.getData();
         Node currentNode = root;
         ArrayList<Node> list = new ArrayList<Node>();
@@ -285,10 +287,10 @@ public class BST {
      * @param child The node whose parent we want to find
      * @return The parent node
      */
-    public Node findParentNodeInt(int childData){
+    public Node findParentNode(int childData){
 
         // get a list of nodes
-        ArrayList<Integer> list = listToNodeInt(childData);
+        ArrayList<Integer> list = listToNode(childData);
 
         Node parent = findNode(list.get(list.size()-2));
 
@@ -300,10 +302,10 @@ public class BST {
      * @param child The node whose parent we want to find
      * @return The parent node
      */
-    public Node findParentNode(Node child){
+    public Node getNodesParent(Node child){
 
         // get a list of nodes
-        ArrayList<Node> list = listToNode(child);
+        ArrayList<Node> list = nodesToNode(child);
 
         Node parent = findNode(list.get(list.size()-2).getData());
 
@@ -338,7 +340,7 @@ public class BST {
         }
         else{
             // get the parent node of the node to remove
-            Node parent = findParentNode(nodeToRemove);
+            Node parent = getNodesParent(nodeToRemove);
 
             // check that there is only a right child
             if (nodeToRemove.getRight() != null && nodeToRemove.getLeft() == null){
@@ -396,8 +398,8 @@ public class BST {
                 successor.setRight(nodeToRemove.getRight());
 
                 // remove the successors parents pointer
-                Node successorParent = findParentNode(successor);
-                if (findParentNode(successor).getData() < successor.getData()){
+                Node successorParent = getNodesParent(successor);
+                if (getNodesParent(successor).getData() < successor.getData()){
                     // we are on right of parent
                     
                     successorParent.setRight(null);
@@ -451,7 +453,7 @@ public class BST {
         }
         else{
             // get the parent node of the node to remove
-            Node parent = findParentNode(nodeToRemove);
+            Node parent = getNodesParent(nodeToRemove);
 
             // check that there is only a right child
             if (nodeToRemove.getRight() != null && nodeToRemove.getLeft() == null){
@@ -509,8 +511,8 @@ public class BST {
                 successor.setRight(nodeToRemove.getRight());
 
                 // remove the successors parents pointer
-                Node successorParent = findParentNode(successor);
-                if (findParentNode(successor).getData() < successor.getData()){
+                Node successorParent = getNodesParent(successor);
+                if (getNodesParent(successor).getData() < successor.getData()){
                     // we are on right of parent
                     
                     successorParent.setRight(null);

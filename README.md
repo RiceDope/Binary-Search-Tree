@@ -1,18 +1,13 @@
-# Changing parameters
-Here the main goal was to change some of the parameters of the code. This was to feature alternate versions of the functions that worked previously.
+# Binary Search Tree
 
-### Example
-```Java
-// returns an ArrayList<Integer>
-tree.listToNode(5);
+Welcome to the binary search tree. These two java files give the ability for the user to create and manage a binary search tree.
 
-// returns an ArrayList<Node>
-tree.nodesToNode(6);
-```
+## Recent updates
+The most recent update added in some more useful functions to help the user manage the tree. Check the Sample-Code branch for more info on the updates.
 
-*The benefit of this is that rather than getting an array of integers we now get an array of nodes. before we would need to then use the ``` tree.findNode(tree.listToNode(5).get(tree.listToNode(5).size()-1))).getData()``` in order to get the parents nodes data and it would be quite time consuming and complicated to look at. It just removes the '''tree.findNode() call'''*
+## Working on
+- Post-Order traversal
+- Potentially adding ability for doubles to be used (Maybe)
 
-This is just one example of improvements that have been made. Check the Sample-Code branch for a full list of functions and sample use cases.
-
---Rhys--
-
+## Goals
+- To finish before christmas 23

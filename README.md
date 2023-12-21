@@ -7,7 +7,8 @@ The most recent update added in some more useful functions to help the user mana
 
 ## Working on
 - Post-Order traversal
+- Function to check whether an item is in the tree
 - Potentially adding ability for doubles to be used (Maybe)
 
 ## Goals
-- To finish before christmas 23
+- To finish before christmas 2023
